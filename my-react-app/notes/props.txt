@@ -1,0 +1,96 @@
+4TH PART OF THE PLAYLIST
+--------------------------
+PROPS
+short for propertey =>> READ-ONLY properties that are shared between components.
+a parent component can send data to a child component.
+<component key="value" />
+
+
+whats the use of props??
+its to make re-usable component but with diffrent content
+so for the student componene everytime we will send diffrent key values from the parent that the child will just take takit
+
+
+so lets say we have this fucntion componenet
+
+function Student(props){
+    return(
+        <div>
+            <p>Name: {props.name}</p>
+        </div>
+    );
+
+}
+
+export default Student
+
+in this case we are sending data from the parent to the child
+the child in this case is the Student function component
+the parent would look something like this
+
+import Student from "./Students";
+function App() {
+  return (
+  <div>
+
+    <Student name="mewomeow"/>
+
+  </div>
+ );
+}
+
+export default App
+
+so the parent is who uses the child component, and the parent 
+have to send something for the prop in this case the prop is the name
+and is assigned mewomeow from the parent 
+
+
+note booleans dont display to the dom directly 
+we usually do smth like
+<p>Student: {props.isStudent ? "Yes" : "No"}</p>
+and this would print either yes for true bool or no for false bool
+
+we can place some complex js code into the html here
+
+
+
+-----------------------------------------------
+
+proptypes =>> a mechanism that ensures that the passed values are of the correct
+datatype
+age: propTypes.number
+
+if we are working with props its good practice to use proptypes
+
+to use proptypes
+under ur component function
+create this
+
+
+Student.protoTypes = {
+    name: PropTpyes.string,
+    age: PropTpyes.number,
+    isStudent: PropTpyes.bool,
+}
+
+for every value in the prop define its datatype
+also must imoport this in the top of the component file that is using prop
+import PropTpyes from 'prop-types'
+
+
+the use of propTypes, if we send the wrong datatype for one of the key values
+it wont prevent the app from running but it will issue a warrning in the console 
+
+
+--------------------------------------
+
+defaultProps = default values for props in case they are not passed from the parent component
+name "Guest"
+
+ususally added at the bottom of the component file
+something that would look like thisStudent.defaultProps = {
+    name: "Guest",
+    age: 0,
+    isStudent: false,
+}

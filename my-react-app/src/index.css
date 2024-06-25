@@ -30,3 +30,16 @@
 }
 
 
+
+.student{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2em;
+  padding: 10px;
+  border: 1px solid hsl(0, 0%, 50%,0.8);
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.student p{
+  margin: 0;
+}
