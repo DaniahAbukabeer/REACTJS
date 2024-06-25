@@ -1,0 +1,159 @@
+rendering lists in reactjs
+
+if we just make a list of items in a component function and 
+return that as is we will get something like htis
+
+function List(){
+
+    const fruits = ["apple", "orange", "banana", "coconat", "pineapple"];
+
+    return(fruits);
+}
+
+and this in the parent 
+<List/>
+
+the output would be this 
+appleorangebananacoconatpineapple
+
+to prevent that we must convert the array items to li
+to do so =>
+
+function List(){
+
+    const fruits = ["apple", "orange", "banana", "coconat", "pineapple"];
+    const listItems = fruits.map(fruit => <li>{fruit}</li>)
+    return(<ul>{listItems}</ul>);
+}
+
+use the map method
+
+we can use method for arrays normally how we would use them
+like for example
+fruit.sort();
+this would sort the order of the items in the array list
+
+
+--------------------------
+
+convert array to array of objects
+
+
+function List(){
+
+    const fruits = [{name:"apple", calories:95}
+    , {name:"orange", calories: 45}
+    , {name:"banana", calories: 105},
+     {name:"coconat", calories: 159},
+      {name:"pineapple", calories: 37}];
+    
+    //we can even sort them 
+    fruits.sort();
+    const listItems = fruits.map(fruit => <li>{fruit.name}</li>)
+    return(<ul>{listItems}</ul>);
+}
+
+make the items of the array an objects by wrapping them with {}
+then give each a key value pair 
+for example
+[{name:"DanyBanany"},{name:"meowmeow"},];
+
+but just doing this wont work, we need to assing a key for the array of objects
+it must be a uniqe value for every item in the list!!
+for example it would look something like this
+const listItems = fruits.map(fruit => <li key={fruit.name}>{fruit.name}</li>)
+
+but in real world problems and db's every row of data will have a uniqe id, so lets do that
+
+because names might have conflicts
+
+here we are outputting both the name and the calories for each fruit item
+ const listItems = fruits.map(fruit => 
+    <li key={fruit.id}>{fruit.name}:
+     &nbsp;
+    <b>{fruit.calories}</b></li>);
+
+
+    //we can even sort them 
+    //ALPHABETICAL
+    fruits.sort((a,b)=> a.name.localeCompare(b.name));
+    //reverse alphabetical order
+    fruits.sort((a,b) => b.name.localeCompare(a.name)); 
+    //sort by calories in a numericall way
+    fruits.sort((a,b) => a.calories - b.calories);
+    //sort by calories in reverse nuericall way
+    fruits.sort((a,b) => b.calories - a.calories);
+
+
+
+
+---------------------------------------------------------------------------
+
+HOW TO FILTER OBJECTS BY A CERTAIN CRITERIA
+
+
+    const lowcalFruits = fruits.filter(fruit => fruit.calories < 100 );
+
+    const listItems = lowcalFruits.map(lowcalFruit => 
+    <li key={lowcalFruit.id}>{lowcalFruit.name}: &nbsp;
+                        <b>{lowcalFruit.calories}</b></li>);
+    return(<ol>{listItems}</ol>);
+
+    here we are filtering based on the calories where its less than 100
+
+    we can also do greater than or equal to 100
+
+        const highCalFruits = fruits.filter(fruit => fruit.calories >= 100);
+
+    const listItems = highCalFruits.map(highcalFruit => 
+    <li key={highcalFruit.id}>{highcalFruit.name}: &nbsp;
+                        <b>{highcalFruit.calories}</b></li>);
+    return(<ol>{listItems}</ol>);
+
+
+    -------------------------------------------------------------------
+
+    the way we created things so far is that for each list component it has its own list items 
+
+
+    first move the object array (list) to the app.jsx (parent)
+      const fruits = [{name:"apple", calories:95}
+  , {id: 1,name:"orange", calories: 45}
+  , {id:2,name:"banana", calories: 105},
+   {id:3,name:"coconat", calories: 159},
+    {id:4,name:"pineapple", calories: 37}];
+
+    make sure its outside the return();
+    method
+
+    then edit the List component function to be like this
+
+function List(props){
+
+    const itemList = props.items;
+
+    const listItems = itemList.map(item => 
+    <li key={item.id}>{item.name}: &nbsp;
+                        <b>{item.calories}</b></li>);
+
+
+    return(<ol>{listItems}</ol>);
+}
+
+export default List 
+
+
+
+
+-------------------------------------------
+
+now that its fully reusable so we can just make a new list in the app.jsx and use the list componet to display it in the same way
+but we can now use conditional rendereing to only show the list if it has items, 
+bc as is, if we add a list component in app.jsx but its list is empty it would still render its title
+
+to conditionally render it 
+
+use this in the app.jsx to only render the list if it has length to it
+{fruits.length > 0 ? <List items={fruits} category="Fruits"/> : null}
+    {vegitables.length > 0 ? <List items={vegitables} category="Vegitables"/> : null }
+    {empty.length > 0 && <List items={empty} category="Empty test"/>}
