@@ -1,2 +1,10 @@
 NOTES FROM REACT FULL COURSE FOR FREE CRASH COURSE BY BRO CODE ON YOUTUBE
 
+to set style we need to give the html elements a class right?\
+but you cant use class bc its a reserved word for jsx
+instead use className!
+
+
+note!!
+if theres an error with ur code nothing will rended on the screan, use inspect on hte browser if u r not getting any syntax errors!!
+ 
