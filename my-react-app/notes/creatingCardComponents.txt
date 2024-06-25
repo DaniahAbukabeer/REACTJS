@@ -7,4 +7,9 @@ instead use className!
 
 note!!
 if theres an error with ur code nothing will rended on the screan, use inspect on hte browser if u r not getting any syntax errors!!
+
+
+ for placeholders for images
+
+ <img src="https://via.placeholder.com/150" />
  
