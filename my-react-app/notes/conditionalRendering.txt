@@ -1,0 +1,42 @@
+conditional rendering = allows you to control what gets rendered in your application based on certain conditions 
+(show, hide, or change components)
+
+
+
+we can say something like this
+
+function UserGreating(props){
+    // if(props.isLoggedIn){
+    //     return <h2>Welcome {props.username}</h2>
+    // }
+    // else {
+    //     return <h2>Please log in to continue </h2>
+    // }
+
+    return (
+        props.isLoggedIn 
+    ?<h2>Welcome {props.username}</h2> 
+    : <h2>Please log in to continue </h2>
+)
+}
+in our component function
+then send values using props from the parent 
+like this for example
+
+<UserGreating isLoggedIn={true} username="DanyBanany"/>
+
+
+therese another way to use ternary operators other than the way we have it right now
+take it from this
+return (
+        props.isLoggedIn 
+    ?<h2 className="welcome-message">Welcome {props.username}</h2> 
+    : <h2 className="login-propmt">Please log in to continue </h2>
+)
+to this
+    const welcomeMessage = <h2 className="welcome-message">Welcome {props.username}</h2> 
+    const loginPrompt = <h2 className="login-propmt">Please log in to continue </h2>
+    return (props.isLoggedIn ? welcomeMessage : loginPrompt);
+
+    which can be more readable than before hehehhe
+    

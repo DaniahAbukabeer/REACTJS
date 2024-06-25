@@ -2,9 +2,12 @@ import Card from "./Card"
 import Header from './Header';
 import Button from "./Button";
 import Student from "./Students";
+import UserGreating from "./UserGreeting";
+
 function App() {
   return (
   <div>
+    <UserGreating isLoggedIn={true} username="DanyBanany"/>
     <Card/>
     <Card/>
     <Card/>
