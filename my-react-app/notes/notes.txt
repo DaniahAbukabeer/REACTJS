@@ -1,0 +1,36 @@
+NOTES WHILE TAKING THE REACT FULL COURSE FOR FREE CRASH COURSE BY BRO CODE ON YOUTUBE
+
+
+JSX = javascript xml
+allows u to write html like code for interface 
+reduces rendinring time bc it only re-renders changes on the dom and not everything
+
+js requirements
+arrays
+classes
+objects
+arrow functions
+
+
+if the dev enviroment is closed and you want to restart it
+use terminal 
+cd to ur project folder
+npm run dev 
+to start the dev server and then refresh the web page!!
+
+assets folder is v similar to the public folder
+but files for assets are bundled during the final output but public assets are not!!
+and are avilable via a url
+
+
+the app.jsx is a component that we import into the main.jsx
+components can have a dedicated css style sheet
+
+react elements are only capable of returning one component but that component can have childeredn within it!!
+
+
+when we want to return more than one component we use someting called a fragment
+where its just an empty set of angled brakets
+
+
+a component is a small section of code that can include js and html , the function will return the code and make it re-usable!!
