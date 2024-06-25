@@ -1,5 +1,36 @@
 HOW TO STYLE REACT componentS WITH css
 
-1. EXTERNAL
-2.MODULES
-3.INLINE
+1.EXTERNAL (global styleing index.css good for small projects)
+2.MODULES (preffered for each component u make a folder with the component and its style.css)
+3.INLINE (in the same component file)
+
+
+for in line styling 
+create a style const variable above the return 
+add all the css style you want for it then for the html element add 
+style={NameOfVariable}
+
+
+example 
+
+function Button(){
+
+    const styles = {
+            backgroundColor: "hsl(200, 100%, 50%)",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            border: "none",
+            cursor: "pointer",
+            display: "block",
+    }
+
+    return (
+        <button style={styles}>Click me</button>
+    );
+}
+
+it prevent global style conflicts 
+great for isolated components with minimal styling
+
+less maintable for larger projects
