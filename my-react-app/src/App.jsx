@@ -7,6 +7,8 @@ import List from './List';
 import ProfilePicture from "./ProfilePicture";
 import Buttonnew from "./Buttonnew";
 
+import MyComponent from "./myComponent";
+
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
                   {id:1,name:"orange", calories: 45},
@@ -29,7 +31,7 @@ function App() {
     <Card/>
     <Card/>
     <Buttonnew/>
-
+    <MyComponent />
     <ProfilePicture></ProfilePicture>
 
     {fruits.length > 0 ? <List items={fruits} category="Fruits"/> : null}

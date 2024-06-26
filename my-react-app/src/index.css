@@ -85,3 +85,10 @@
   color: hsl(0, 0%, 45%);
   cursor: pointer;
 }
+
+img.pookie {
+  margin: 3px 5px;
+  display: block;
+  padding-bottom: 3px;
+  border-bottom: 4px solid black;
+}

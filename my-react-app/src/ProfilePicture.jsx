@@ -6,7 +6,7 @@ function ProfilePicture(){
     const handleClick = (e) => {
         e.target.style.display = "none";
     };
-    return(<img onClick={(e)=> {handleClick(e)}} src={imageUrl}></img>)
+    return(<img className="pookie" onClick={(e)=> {handleClick(e)}} src={imageUrl}></img>)
 }
 
 

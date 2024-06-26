@@ -1,0 +1,53 @@
+react hook = special function that allows functional components to use 
+react features without writing class components (react v16.8)
+(useState, useEffect, useContext, useReducer, useCallback, and more...)
+
+
+useState() = a react hook that allows the creation of a stateful variable AND a setter 
+function to update its value in the virtual DOM
+ [name, setName]
+ variable  setterfunction for the variable
+
+
+ in order to be able to use a react hook we need to import it
+ at the top of the component
+ import react 
+ but using object destructuring to extract individula variables or functions 
+
+ import React, {useState} from 'react';
+
+
+    const [name, setName] = useState();
+    //we are creating a stateful variable and a setter fucntion to update that variable
+
+    useState() method returns an array with two element, 
+    a variable and a setter function, use array destructering to destruct these two elements
+
+if we ever want to change the value of hte statful varialbe we use the setter
+its a fucntion
+
+
+if we try to do this
+let [name, setName] = useState();
+    //we are creating a stateful variable and a setter fucntion to update that variable
+    
+    const updateName = () => {
+        name = "DanyBananay";
+
+    };
+    return(
+        <div>
+            <p>Name: {name}</p>
+            <button onClick={updateName}>Set Name</button>
+        </div>
+    );
+
+
+even if we click the button the name wont update, bc the dom is still showing the old state, 
+that why we need to use the setName to update name!
+
+
+we can set an initial state
+let [name, setName] = useState("Guest");
+now even before we hit the button and set it using the updateName method on click
+the ui would show guest 
