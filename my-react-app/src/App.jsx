@@ -4,6 +4,8 @@ import Button from "./Button";
 import Student from "./Students";
 import UserGreating from "./UserGreeting";
 import List from './List';
+import ProfilePicture from "./ProfilePicture";
+import Buttonnew from "./Buttonnew";
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -26,6 +28,9 @@ function App() {
     <Card/>
     <Card/>
     <Card/>
+    <Buttonnew/>
+
+    <ProfilePicture></ProfilePicture>
 
     {fruits.length > 0 ? <List items={fruits} category="Fruits"/> : null}
     {vegitables.length > 0 && <List items={vegitables} category="Vegitables"/>}

@@ -1,0 +1,58 @@
+click event = an interaction when a user clicks on a specific elemnt 
+we can respond to click by passing a callback to the onclick event handler 
+
+
+function buttonnew(){
+
+    const handleCick = () => console.log("OUCH!!");
+
+    const handleClidk2 = (name) => console.log(`${name} stop clicking me`);
+
+    return(
+        <button onClick={handleClidk2("Danyy")}>Click me 👽</button>
+    );
+}
+
+for the onclick event listenrer if we are trying to send data to the method using ()
+the method will be called even without clicking the button bc of the ()
+so to avoid that we do the following 
+wrap the fallback fucntion with a an arrow method!
+
+return(<button onClick="{()=> handleClidk2("Dannyyy")}">click me</button>)
+
+
+we can access the type of event that happened and in this example its on click and when we do so
+we are then accessing the text on the button and changeing it 
+ const handleClidc = (e) =>{
+        e.target.textContent = "Ouch!!!";
+    }
+
+    and in the return we are fallback calling it like this
+        return(
+        <button onClick={(e)=> handleClidc(e)}>Click me 👽</button>
+    );
+e reprensnt the event 
+
+we can use a doulbe click event listenrer
+        <button onDoubleClick={(e)=> handleClidc(e)}>Click me 👽</button>
+        and everything would still work hte same
+
+
+
+we can even make an image have an event listenrer
+
+function ProfilePicture(){
+
+    const imageUrl = '/src/assets/pfp.jpg';
+
+    const handleClick = (e) => {
+        e.target.style.display = "none";
+    };
+    return(<img onClick={(e)=> {handleClick(e)}} src={imageUrl}></img>)
+}
+
+
+here we are making the image disapper when we click on it
+
+we can also just say 
+const handleCick = () => console.log("meowmewo");

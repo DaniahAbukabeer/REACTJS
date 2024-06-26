@@ -33,12 +33,11 @@ List.defaultProps = {
     items: [],
 }
 
-List.proptypes = {
-    category: PropTypes.string,
-    items: proptypes.arrayOf(PropTypes.shape({id: PropTypes.number, 
-                                              name: PropTypes.string,
-                                              calories: PropTypes.number,   
-    })),
-}
+
+// react-dom_client.js?v=7980a319:521 Warning: List: Support for defaultProps will be removed from function components in a future major release. Use JavaScript default parameters instead.
+//     at List (http://localhost:5173/src/List.jsx:19:26)
+//     at div
+//     at App
+
 
 export default List
