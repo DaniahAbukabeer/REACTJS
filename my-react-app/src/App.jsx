@@ -8,7 +8,7 @@ import ProfilePicture from "./ProfilePicture";
 import Buttonnew from "./Buttonnew";
 import Counter from "./Counter";
 import MyComponent from "./myComponent";
-
+import MyComponentNew from "./MyComponentNew";
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -34,7 +34,7 @@ function App() {
     
     
     
-    
+    <MyComponentNew/>
     <Card/>
     <Card/>
     <Card/>

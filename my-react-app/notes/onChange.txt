@@ -1,0 +1,4 @@
+onchange = event handler used primarily with form elements
+ex <input>, <textarea></textarea>, <select></select>, <radio></radio>
+Triggers a function every time the value of the input changes
+
