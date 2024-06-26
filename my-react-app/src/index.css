@@ -92,3 +92,31 @@ img.pookie {
   padding-bottom: 3px;
   border-bottom: 4px solid black;
 }
+
+div.counter-parent {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  font-size: 5em;
+}
+
+p.counter-txt{
+  margin-bottom: 0;
+  
+}
+
+.counter-button{
+ font-size: 50px;
+  border-radius: 50%;
+  border: none;
+  height: 200px;
+  margin: 0 10% 20px;
+}
+
+.counter-button:hover{
+  background-color: rgb(203, 90, 255);
+  cursor: pointer;
+}
+
+

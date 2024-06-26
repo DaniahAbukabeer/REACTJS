@@ -6,8 +6,9 @@ import UserGreating from "./UserGreeting";
 import List from './List';
 import ProfilePicture from "./ProfilePicture";
 import Buttonnew from "./Buttonnew";
-
+import Counter from "./Counter";
 import MyComponent from "./myComponent";
+
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -26,6 +27,14 @@ function App() {
   return (
   <div>
     <UserGreating isLoggedIn={true} username="DanyBanany"/>
+    
+    
+      <Counter/>
+    
+    
+    
+    
+    
     <Card/>
     <Card/>
     <Card/>
@@ -42,6 +51,9 @@ function App() {
     <Student name="Patric" age={42} isStudent={false}/>
     <Student name="squidward" age={50} isStudent={false}/>
     <Student name="sandy" age={27} isStudent={true}/>
+    <Student name="mewomeow" age={30} isStudent={true}/>
+    <Student name="heheheh"/>
+
     <Student/>
     <Student name="Larry"/>
 

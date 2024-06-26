@@ -6,6 +6,12 @@ function MyComponent(){
     const [age, setAge] = useState(0);
     const [isEmployeed, setIsEmployeed] = useState(false);
 
+    const [currentCar, setCurrentCar] = useState();
+
+    const updateCar = () =>{
+        
+    };
+
     const updateAge = () => {
         setAge(age + 1);
     }
