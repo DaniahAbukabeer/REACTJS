@@ -15,8 +15,8 @@ import NewComponent from "./NewComponent";
 
 import MyArrayState from "./MyArrayState";
 import ArrayOfObjects from "./ArrayOfObjects";
-
-
+import ToDoList from "./ToDoList";
+import SomeFile from "./SomeFile"
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -34,9 +34,13 @@ function App() {
     const empty = [];
   return (
   <div>
-    {/* <UserGreating isLoggedIn={true} username="DanyBanany"/>
-    
-    
+          <UserGreating isLoggedIn={true} username="DanyBanany"/>
+
+        <ToDoList/>
+          {/* <SomeFile /> */}
+    {/* 
+      
+      <
       <Counter/> */}
 
       {/* <ColorPicker></ColorPicker> */}
@@ -47,7 +51,7 @@ function App() {
     
       {/* <MyArrayState/> */}
 
-      <ArrayOfObjects/>
+      {/* <ArrayOfObjects/> */}
 
     {/* <MyComponentNew/>
     <Card/>
@@ -79,3 +83,13 @@ function App() {
 }
 
 export default App
+
+
+// import React from 'react'
+// import SomeFile from './SomeFile'
+
+// export default function App() {
+//   return (
+//     <SomeFile/>
+//   )
+// }
