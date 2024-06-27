@@ -1,0 +1,66 @@
+updater function = a function passed as an argument to setState() usually
+ex. setYear(arrow function)
+//this usually would work but passing an updater function is a better practice
+which usually is an arrow function 
+allow for safe updates based on the previous state used with multiple
+state updates and asynchronous functions good practice to use updater functions
+
+
+
+lets say we have this ex.
+const [count, setCount] = useState(0);
+
+
+    function increment(){
+        setCount(count +1);
+        
+    }
+what would happen if we add another setCount(count + 1)?
+you would think this would make the button add +2 every time we hit the increment buttonbut it doesnt
+
+bc we uses the current state to calculate the next state.
+set functions do not trigger an update.
+react batches together state updates for performance reasons.
+next state becomes the current state after an update, 
+
+os if it looked something like this
+        setCount(count +1);
+        //UPDATE
+        setCount(count  + 1);
+        //UPDATE
+        setCount(count + 1);
+        //UPDATE
+
+you would think theres an update after every setCount call
+
+instead it would look something like this
+        setCount(count +1);
+        setCount(count  + 1);
+        setCount(count + 1);
+        //UPDATE
+        so the result of each one of the setCounts is just 0+1 = 1
+        so in the end we would only increament once this way and not three times
+
+so if we want to use multiple state updates we would just use updater function
+
+it would look something like this 
+        setCount(count => count + 1);
+        setCount(count => count + 1);
+        setCount(count => count + 1);
+        //count                                     =>        count+1
+        //this count is the previous state count            calculating the next state count
+
+and according to the react documents we must rename count
+so it cant be just setCount(count=> count + 1);
+but it should be something that incdecates that this is the previous count
+so it would look something like this
+setCount(prevCount => prevCount+1);
+
+
+
+takes the PENDING state (not the current state) to calculate nex tstate.
+react puts your updater function in a queue (waiting in line)
+during the next render, it will call them in the same order
+
+
+

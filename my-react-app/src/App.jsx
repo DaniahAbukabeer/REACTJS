@@ -10,7 +10,7 @@ import Counter from "./Counter";
 import MyComponent from "./myComponent";
 import MyComponentNew from "./MyComponentNew";
 import ColorPicker from "./ColorPicker";
-
+import MyCounter from "./MyCounter";
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
                   {id:1,name:"orange", calories: 45},
@@ -32,7 +32,9 @@ function App() {
     
       <Counter/> */}
 
-      <ColorPicker></ColorPicker>
+      {/* <ColorPicker></ColorPicker> */}
+
+      <MyCounter/>
     
     
     
