@@ -1,0 +1,48 @@
+
+lets say we have this example 
+
+import React, {useState} from "react";
+
+function NewComponent(){
+
+
+    const [car, setCar] = useState({year: 2020, make: "VW", model: "Golf",});
+
+    function handleYearChange(event){
+        setCar({year: 2025});
+    }
+    function handleMakeChange(event){
+        
+    }
+    function handleModelChange(event){
+        
+    }
+    return(
+        <div>
+                <p>Your favorite car is a {car.year} {car.make} {car.model}</p>
+
+                <input type="number" value={car.year} onChange={handleYearChange} />
+                <br/>
+                <input type="text" value={car.make} onChange={handleMakeChange} />
+                <input type="text" value={car.model} onChange={handleModelChange}/>
+
+        </div>
+    );
+
+}
+
+export default NewComponent
+
+in this example we want the values taken from teh input to update the values for the objects
+so lets say the year was set to be 2025 in teh handleYearChange function
+what would happen if we make the functio like this
+    function handleYearChange(event){
+        setCar({year: 2025});
+    }
+is that we will remove the object that have the three properties year make and model with an object that has only one 
+propertiy that is year and is 2025 value, to prevent this from happening we usin spread operator
+
+setCar({...car, year: 2025});
+what this would do is this
+{year:2020, make:"VW", model: "Golf",: year: 2025};
+and js doesnt allow doblicates keys so it would take the latter year value for year and ignore the previous one!
