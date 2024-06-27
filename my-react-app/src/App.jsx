@@ -14,6 +14,7 @@ import MyCounter from "./MyCounter";
 import NewComponent from "./NewComponent";
 
 import MyArrayState from "./MyArrayState";
+import ArrayOfObjects from "./ArrayOfObjects";
 
 
 
@@ -44,7 +45,9 @@ function App() {
     
       {/* <NewComponent/> */}
     
-      <MyArrayState/>
+      {/* <MyArrayState/> */}
+
+      <ArrayOfObjects/>
 
     {/* <MyComponentNew/>
     <Card/>
