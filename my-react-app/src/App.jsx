@@ -9,6 +9,7 @@ import Buttonnew from "./Buttonnew";
 import Counter from "./Counter";
 import MyComponent from "./myComponent";
 import MyComponentNew from "./MyComponentNew";
+import ColorPicker from "./ColorPicker";
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -26,15 +27,17 @@ function App() {
     const empty = [];
   return (
   <div>
-    <UserGreating isLoggedIn={true} username="DanyBanany"/>
+    {/* <UserGreating isLoggedIn={true} username="DanyBanany"/>
     
     
-      <Counter/>
+      <Counter/> */}
+
+      <ColorPicker></ColorPicker>
     
     
     
     
-    <MyComponentNew/>
+    {/* <MyComponentNew/>
     <Card/>
     <Card/>
     <Card/>
@@ -52,13 +55,13 @@ function App() {
     <Student name="squidward" age={50} isStudent={false}/>
     <Student name="sandy" age={27} isStudent={true}/>
     <Student name="mewomeow" age={30} isStudent={true}/>
-    <Student name="heheheh"/>
+    <Student name="heheheh"/> */}
 
-    <Student/>
+    {/* <Student/>
     <Student name="Larry"/>
 
 
-    <Button/>
+    <Button/> */}
   </div>
  );
 }
