@@ -1,0 +1,28 @@
+how we can update the state of an array using react!!!!
+
+
+import React,{useState} from "react";
+
+function MyArrayState(){
+
+    const [foods, setFoods] = useState(["Apple","Orange","Banana"]);
+
+    function handleAddFood(){}
+
+    function handleRemoveFood(){}
+
+    return(<div>
+            <h2>List of Food</h2>
+            <ul>
+                {foods.map((food, index)=><li></li>)}
+            </ul>
+    </div>);
+
+}
+
+export default MyArrayState
+
+if we have this as an example, notice how if we run the code as is, the foods array
+has three initial values
+so when we run the code,
+it creates three empty li elements because we are maping through foods array and it has three elements

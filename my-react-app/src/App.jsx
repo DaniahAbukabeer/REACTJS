@@ -13,7 +13,7 @@ import ColorPicker from "./ColorPicker";
 import MyCounter from "./MyCounter";
 import NewComponent from "./NewComponent";
 
-
+import MyArrayState from "./MyArrayState";
 
 
 
@@ -42,9 +42,10 @@ function App() {
 
       {/* <MyCounter/> */}
     
-      <NewComponent/>
+      {/* <NewComponent/> */}
     
-    
+      <MyArrayState/>
+
     {/* <MyComponentNew/>
     <Card/>
     <Card/>
