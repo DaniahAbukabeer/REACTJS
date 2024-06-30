@@ -313,4 +313,12 @@ body{
   text-align: center;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.763);
 
+
+}
+
+
+.box{
+  border: 3px solid ;
+  padding: 25px;
+  background-color: hsla(0, 0%, 100%, 0.532);
 }

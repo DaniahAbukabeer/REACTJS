@@ -1,0 +1,52 @@
+usecontext() = react hook that allows you to share 
+values between multiple levels of components wihtout 
+passing props through each level
+
+<component A />
+    <component B/>
+        <component C/>
+            <component D/>
+
+
+if we define a variable in component A and we would want to use it in another component of the nested ones
+inside of A, we will have to send it using props to the other components nested in A 
+and lets say we want to use it in the component d, then we will have to pass it\
+from a to b to c then use it in d, that is known as prop drilling, which can be come v teaduis and bad
+but theres another selution 
+
+and that is with usecontext hook
+!!!! PROIVDER COMPONENT !!!! =>>>> is the component we would like to access data from
+1. import {creatContext} from 'react';
+2. export const MyContext = createContext();
+3. <MyContext.Provider value ={valu e}>
+    <child/>
+</MyContext.Provider>
+
+!!!! CONSUMER COMPONENTS !!!!
+1. import React, {useContext} from 'react';
+    import {MyContext} from './componentA';
+2. const value = useContext(MyContext);
+
+
+
+step 1, locate the provider component, import createContext from react,
+step 2, create a mycontect variable, give it a meaningful name,
+ex. if its for a user call it userContext 
+step 3, wrap the component of the child ex. <componentB /> with 
+<MyContext.Provider value={userContext}>
+</MyContext.Provider>
+
+step 4, go to the component that will use the value sent from componentA
+import creatContext from react
+step 5, import the context of the variable we made in the the provider component
+ex. import { UserContext } from './ComponentA'
+
+step 6, now lastley we will access the value of the userContext, 
+and store that in a new varialbe inside our componentn,
+ex. const user = useContext(UserContext);
+and thats how we'll use it in the child componentn
+
+
+so instead of passing down the varialbe we want using prop drilling, 
+when we use useContext hook we will traversl from teh center component (the one trying to use the variable)
+to the nearest provider!!! 

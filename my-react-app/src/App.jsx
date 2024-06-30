@@ -18,9 +18,9 @@ import ArrayOfObjects from "./ArrayOfObjects";
 import ToDoList from "./ToDoList";
 import SomeFile from "./SomeFile"
 import UseEffect from "./UseEffect";
-import DigitalClock from "./DigitalClock";
+// import DigitalClock from "./DigitalClock";
 import WidthHighet from "./WidthHighet";
-
+import ComponentA from "./ComponentA";
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
                   {id:1,name:"orange", calories: 45},
@@ -32,7 +32,7 @@ function App() {
                         {id:6,name:"celery", calories: 15},
                         {id:7,name:"carrots", calories: 52},
                         {id:8,name:"corn", calories: 63},
-                        {id:9,name:"broccoli", calories: 50}];
+                      {id:9,name:"broccoli", calories: 50}];
 
     const empty = [];
   return (
@@ -47,8 +47,9 @@ function App() {
       
       <
       <Counter/> */}
+      <ComponentA/>
 
-      <DigitalClock/>
+      {/* <DigitalClock/> */}
 
       {/* <ColorPicker></ColorPicker> */}
 
