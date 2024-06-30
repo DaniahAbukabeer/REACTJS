@@ -1,4 +1,4 @@
-/* .card {
+.card {
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
   box-shadow: 5px 5px 5px hsl(0, 0%, 0%, 0.1);
@@ -27,6 +27,7 @@
 .card .card-text{
   font-family: Arial, Helvetica, sans-serif;
   color: hsl(0, 0%, 30%);
+  text-align: start;
 }
 
 
@@ -283,10 +284,10 @@ li{
   font-size: 1.4rem;
   margin-left: 10px;
  
-} */
+}
 
 /* commented everything for the colock app to work as wanted */
-body{
+/* body{
   background-image: url("./assets/stevernUniverseBackGround.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -321,4 +322,4 @@ body{
   border: 3px solid ;
   padding: 25px;
   background-color: hsla(0, 0%, 100%, 0.532);
-}
+} */

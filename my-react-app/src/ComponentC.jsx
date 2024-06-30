@@ -8,7 +8,7 @@ export default function ComponentC() {
   return (
     <div className='box'>
       <h1>ComponentC</h1>
-      <h3>`HELLO AGAIN ${user}`</h3>
+      <h3>`HELLO AGAIN {user}`</h3>
       <ComponentD />
     </div>
   )

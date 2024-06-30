@@ -1,0 +1,50 @@
+//useState() => re-renders the componetn when the state value changes
+
+but we dont always want to do this,
+
+so we have useRef() = "use Refrence" does not cause a re-render when its values changes. 
+when yopu want a componet to  "remember" some information,
+but you dont want that information to trigger new renders.
+
+
+1. accessing/Interaction with DOM elements
+2. Handling Foucs, Animations, and transitions
+3. Managing Timers and Intervals
+
+
+to use it we have to import it from react
+
+
+
+
+ex. we are working on this code that uses useState
+
+import React, {useState,useEffect,useRef} from 'react'
+
+export default function TryingUseRef() {
+
+    let [number, setNumber] = useState(0);
+
+    useEffect(()=>{
+        console.log("COMPONENT RENDERED");
+    });
+
+    function handleClick(){
+        setNumber(n => n +1);
+    }
+  return (
+    <div>
+        <button onClick={handleClick}>
+            Click me
+        </button>
+    </div>
+  )
+}
+
+
+this would cause the page to re-render every time we click the button which will pring ont he console comopnent rerendered everytiem
+we hit the button!!
+
+but instead if we used useRef
+
+useRef returns a ref object with a single current property initially set to the initial value you provided.
