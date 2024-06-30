@@ -1,0 +1,59 @@
+useeffect() = react hook that tells react do some code when (pick one):
+this component re-renders
+this component mounts
+the state of a value
+
+useEffect(funtion, [dependencies])
+1. useEffect(() =>{})  //runs affter every re-render
+2. useEffect(() => {}, []) //runs only on mount
+                          //what does "on mount" means
+                          //mounting is adding a component to the DOM
+3. useEffect(()=>{}, [value]) //runs on mount + when value changes
+
+USES 
+#1 event listeners
+#2 DOM manipulation
+#3 subscriptions (real-time updates)
+#4 Fetching data from an api
+#5 clean up when a component unmounts
+ //unmount is when we remove a comopnent form the DOM
+
+
+     useEffect(()=>{
+        document.title = `count: ${count}`
+    });
+//if we make the code like this, it will update everytime the page renders,
+aka everytime the button is clicked or an acction is going on
+
+if we do this tho    
+ useEffect(()=>{
+        document.title = `count: ${count}`
+    }, []);
+//we passed an empty array, the side code (in use effect) will only run when the element is mounted in the DOM
+//and we call this array an array of dependencies
+
+//we can also send values to the array of dependencies
+
+    useEffect(()=>{
+        document.title = `count: ${count}`
+    }, [count]);
+
+    //this means when the element mounts AND when the value of count changes, then perfrom the side code
+
+
+
+in useEffect method, we can return a clean up funciton
+
+so when we reomve the element from the DOM, 
+
+
+    useEffect(()=>{
+        document.title = `count: ${count} ${color}`
+
+        return () => {
+            //return a function when this component unmounts (remove it from the DOM), or if theres no dependencies
+            //some cleanupm code
+            //for example if we were to add an event listener, we would want to remove it before unmounting the element
+            //bc it may lead to unexpected behavior!!!
+        }
+    }, [count]);

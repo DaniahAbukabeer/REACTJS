@@ -17,6 +17,9 @@ import MyArrayState from "./MyArrayState";
 import ArrayOfObjects from "./ArrayOfObjects";
 import ToDoList from "./ToDoList";
 import SomeFile from "./SomeFile"
+import UseEffect from "./UseEffect";
+
+import WidthHighet from "./WidthHighet";
 
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
@@ -37,6 +40,8 @@ function App() {
           <UserGreating isLoggedIn={true} username="DanyBanany"/>
 
         <ToDoList/>
+        {/* <UseEffect/> */}
+        <WidthHighet/>
           {/* <SomeFile /> */}
     {/* 
       
