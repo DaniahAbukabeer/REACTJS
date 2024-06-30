@@ -18,7 +18,7 @@ import ArrayOfObjects from "./ArrayOfObjects";
 import ToDoList from "./ToDoList";
 import SomeFile from "./SomeFile"
 import UseEffect from "./UseEffect";
-
+import DigitalClock from "./DigitalClock";
 import WidthHighet from "./WidthHighet";
 
 function App() {
@@ -37,16 +37,18 @@ function App() {
     const empty = [];
   return (
   <div>
-          <UserGreating isLoggedIn={true} username="DanyBanany"/>
+          {/* <UserGreating isLoggedIn={true} username="DanyBanany"/>
 
-        <ToDoList/>
+        <ToDoList/> */}
         {/* <UseEffect/> */}
-        <WidthHighet/>
+        {/* <WidthHighet/> */}
           {/* <SomeFile /> */}
     {/* 
       
       <
       <Counter/> */}
+
+      <DigitalClock/>
 
       {/* <ColorPicker></ColorPicker> */}
 
