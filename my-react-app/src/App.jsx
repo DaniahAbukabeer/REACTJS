@@ -23,6 +23,7 @@ import WidthHighet from "./WidthHighet";
 import ComponentA from "./ComponentA";
 import TryingUseRef from "./TryingUseRef";
 import Cars from "./Cars";
+import StopWatch from "./StopWatch";
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
                   {id:1,name:"orange", calories: 45},
@@ -51,7 +52,13 @@ function App() {
       <Counter/> */}
       {/* <ComponentA/> */}
 
-      <TryingUseRef/>
+      <StopWatch/>
+      <br/>
+      <StopWatch/>
+      <br/>
+      <StopWatch/>
+
+      {/* <TryingUseRef/> */}
 
       {/* <Cars/> */}
 
