@@ -48,3 +48,20 @@ we hit the button!!
 but instead if we used useRef
 
 useRef returns a ref object with a single current property initially set to the initial value you provided.
+
+const ref = useRef();
+the value in useRef is called current value
+and is most useful when the current refers to an html element!!
+
+
+<input ref={inputRef}/>
+
+the ref, is a special attribute used to creat referneces 
+
+
+
+in ref, we are storing a refrence to something, when we use useRef
+it returns an object of one property of current, that can store a value of an array, an object, or an HTML element
+when the stored value changes it doesnt trigger a re-render for the comopnent, this is helpful with accessing and interaction with DOM elements
+handling focus, animations and transitions
+managing timers and Intervals

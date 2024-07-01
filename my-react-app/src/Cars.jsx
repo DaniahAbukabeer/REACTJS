@@ -5,6 +5,11 @@ export default function Cars() {
     const [data,setData] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    //we need cartype = array of the types we will filter based on
+    //
+    const [carType, setCarType] = useState([]);
+    const [selectedMake, setSelectedMake] = useState('');
+
 
     useEffect( ()=>{
         fetch('https://freetestapi.com/api/v1/cars')
@@ -12,12 +17,22 @@ export default function Cars() {
         .then((data)=> {
             setData(data);
             setLoading(false);
+            const makes = [...new Set(data.map(car => car.make))]; 
+            setCarType(makes);
         })
         .catch((error)=>{
             setError(error);
             setLoading(false);
         });
+
+
+
     },[]);
+
+    const handleFilter = (make) => {
+        setSelectedMake(make);
+      };
+
 
     // if (loading) {
     //     return <div>Loading...</div>;
@@ -29,9 +44,17 @@ export default function Cars() {
 
         return (
               <div className="maam">
-            {data.filter(cars => 
-                cars.year == 2020
-            ). map(item=> (
+            
+            {carType.map((make) => (
+             <button key={make} onClick={() => handleFilter(make)}>{make}</button>
+      ))}
+            {/* {data.map(cars=> (
+                <button onClick={handleFilter}>{cars.make}</button>
+            ))}
+             */}
+            {data.filter(car => 
+        selectedMake === '' || car.make === selectedMake
+      ). map(item=> (
                  <div className="card" key={item.id}>
                     <img className="card-image" src={item.image} alt="car picture"/>
                     <h2 className="card-title">{item.make} {item.model}</h2>
@@ -39,7 +62,7 @@ export default function Cars() {
                     {/* <p className="card-text">Make: {item.make}</p> */}
                     <p className="card-text">Color: {item.color}</p>
                     <p className="card-text">Mileage: {item.mileage}</p>
-                    <p className="card-text">Mileage: {item.price}</p>
+                    <p className="card-text">PRICEEE: {item.price}</p>
                 </div>
             ))
         

@@ -51,9 +51,9 @@ function App() {
       <Counter/> */}
       {/* <ComponentA/> */}
 
-      {/* <TryingUseRef/> */}
+      <TryingUseRef/>
 
-      <Cars/>
+      {/* <Cars/> */}
 
       {/* <DigitalClock/> */}
 
