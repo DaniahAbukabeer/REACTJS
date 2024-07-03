@@ -1,0 +1,22 @@
+in the tailwind.config.js file we can set a theme for the project, for example 
+withing the theme:{
+
+} we can set the screens breakpoint so the app is responsive
+and would work nicely on diffrent screen size devices!
+
+
+so we can do something like this
+  theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '976px',
+      xl: '1440px'
+    },
+    extend: {},
+  },
+
+now lets say we want to set the colors for the project
+
+
+LEARN axios
