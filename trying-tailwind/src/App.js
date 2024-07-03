@@ -23,7 +23,29 @@ function App() {
           </div>
           {/* button */}
           <a className='hidden md:block p-3 px-6 pt-2 text-white bg-brightRed rounded-full baseline hover:bg-brightRedLight'>Get Started</a>
+
+          {/* hamburger icon */}
+          <button className=' block hamburger md:hidden focus:outline-none' id="menu-btn">
+            <span className='hamburger-top'></span>
+            <span className='hamburger-middle'></span>
+            <span className='hamburger-bottom'></span>
+
+          </button>
         </div>
+
+        {/* mobile menu */}
+        <div className='md:hidden'>
+          <div id='menu' className='absolute  flex-col items-center self-end  py-8 mt-10 space-y-6 hidden font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md'>
+            <a href='#'>Pricing</a>
+            <a href='#'>Product</a>
+            <a href='#'>About Us</a>
+            <a href='#'>Career</a>
+            <a href='#'>Community</a>
+
+
+          </div>
+        </div>
+
       </nav>
       {/* hero section */}
       <section id='hero'>
@@ -302,7 +324,12 @@ function App() {
           </div>
         </div>
       </footer>
+
+
+      <script src={require("./js/script")}></script>
     </>
+
+
   );
 } 
 
