@@ -1,0 +1,10 @@
+layers in react
+how to theme them,sopacying , system fill,
+color theory
+primary color and complamnirh color and secondary color
+typography
+and how to make my own componentns
+and human segregators
+caption one and two
+fonts for ui and typography,
+how to custimaise all of em with dark mood using terminal 
