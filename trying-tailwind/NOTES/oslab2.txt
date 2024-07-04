@@ -1,0 +1,14 @@
+1. cd ~/Desktop
+2. mkdir Linux Windows
+3. Touch notes.txt student.txt todo.txt
+4. nano student.txt
+    1. sara monther sheikh hasan
+    2. 20220109
+    3. sar20220109@std.psut.edu.jo
+    4. ctrl + X
+    5. Y
+    6. Enter
+5. rm -r Windows
+6. ls -lh ~/Downloads
+7. Find ~/ -type f -name “*.txt”
+8. mv notes.txt student.txt todo.txt Linux/
