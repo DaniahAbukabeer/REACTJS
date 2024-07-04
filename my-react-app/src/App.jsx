@@ -24,6 +24,7 @@ import ComponentA from "./ComponentA";
 import TryingUseRef from "./TryingUseRef";
 import Cars from "./Cars";
 import StopWatch from "./StopWatch";
+
 function App() {
   const fruits = [{id:0,name:"apple", calories:95},
                   {id:1,name:"orange", calories: 45},
@@ -52,12 +53,17 @@ function App() {
       <Counter/> */}
       {/* <ComponentA/> */}
 
-      <StopWatch/>
+      {/* <StopWatch/>
       <br/>
       <StopWatch/>
       <br/>
-      <StopWatch/>
+      <StopWatch/> */}
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-orange-500">
+          Hello, Tailwind CSS!
+        </h1>
 
+      </div>
       {/* <TryingUseRef/> */}
 
       {/* <Cars/> */}

@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* .card {
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
@@ -324,7 +327,7 @@ li{
   background-color: hsla(0, 0%, 100%, 0.532);
 } */
 
-
+/* 
 body{
   display: flex;
   flex-direction: column;
@@ -389,4 +392,4 @@ body{
 
 .reset-button:hover{
   background-color: hsl(205, 90%, 55%);
-}
+} */
