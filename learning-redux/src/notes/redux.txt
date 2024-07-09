@@ -1,0 +1,96 @@
+redux complete tutorial notes
+video by cosden solutions guy on youtube!!
+
+
+redux is a state managment library that allows to have golbae state
+so we can have access to any component no matter where they are in the tree
+
+three difrent consepts 
+
+//STORE
+which is the globale state that is goning to be accessible across any component
+no matter where they are in the react application
+
+
+the store you get do defin it completely how we want
+and connect it to my react application
+the store is ususally made up of multiple slices
+multiple slices of the state each responsible for a certain
+domain in the application 
+
+for example
+interface CounterState {
+    value: number;
+}
+
+interface UserState{
+    isSignedIn: boolean;
+}
+
+//ACTIONS
+essentially what it does is it tells redux what it should do with
+to the state
+(actions have two properties that are super super important)
+ 
+
+ const increment = {
+    type: "INCREMENT",
+    payload: 1
+ };
+  const decrement = {
+    type: "INCREMENT",
+    payload: 1
+ };
+
+ the type is always gonna be of type string and its is required,  
+ essentially its the name of this action 
+ redux is going to use this type to determine what it shold
+
+if we are making action increment or decrement, we dont really need to pass a payload
+bc the default for increment and decrement is by 1
+
+but if we do something like this
+const incrementByAmount = {
+    type: "INCREMENT", 
+    playload: 10,
+}
+
+
+
+//REDUCERS
+are responsible for taking an action and then depending on the type of the action
+woudl go out and make the updated using the redux store,
+
+reducers never directly make an update to the redux store, 
+we have this concept of immutablitiy which means that we re never allowed to directly mutate the state
+instead istead what reducers are going to do is they're going to take 
+the state they're going to make a copy of the state and then make those changes
+to that copy of the state which will have all the other unchange properties of the state
+will completely replace the state as a whole with the copy that has the changes
+applayed!!!!
+ 
+
+ react on default cannot talk to redux we have to use a provider from react reduct 
+ to connect our store and our entire redux application 
+
+
+ got to main.jsx / main.tsx which is basically where we are 
+ rendering the entire app and then im going to import a provider
+
+
+
+ slices in redux, particulary when used in redux toolkit serves a few important purposese:
+
+ 1.encapsulation of logic =>> slices allow you to encapsulate related redux logic into a single module.
+ this would include defining reducesr, action creators and initial state for a specific feature or part of your application state
+
+
+2.reduction of bolierplate ==> redux traditionally involves writing a lot of bolierplate code
+for defining action types, action creators and reducers. slices reduce this bolierplate significantly by providing a concise API ('createslice' function from redux toolkit)
+for defining all of these together
+
+3. modularity and reusabliity
+
+4. imporved tooling and dev experience
+
+

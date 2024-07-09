@@ -29,7 +29,6 @@ function App() {
             <span className='hamburger-top'></span>
             <span className='hamburger-middle'></span>
             <span className='hamburger-bottom'></span>
-
           </button>
         </div>
 
