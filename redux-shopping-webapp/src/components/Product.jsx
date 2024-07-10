@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-
+import { useDispatch } from "react-redux";
+import {add} from '../store/cartSlice';
 const Product = () => {
+    const dispatch = useDispatch();
 
     const [products, getProducts] = useState([]);
 
@@ -10,6 +12,11 @@ const Product = () => {
         .then(data=> data.json())
         .then(result=> getProducts(result));
     },[]);
+
+    const addToCart = (product) =>{
+        //dispatch an add action
+        dispatch(add(product));
+    }
 
     const cards = products.map(product => (
         <div key={product.id} className="h-full">
@@ -22,7 +29,7 @@ const Product = () => {
                         </p>
                     </div>
                 <div className="px-6 pt-4 pb-2">
-                    <button className="font-mono font-bold bg-gray-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
+                    <button onClick={()=> addToCart(product)} className="font-mono font-bold bg-gray-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
                 </div>
             </div>
         </div>
