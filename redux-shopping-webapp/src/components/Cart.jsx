@@ -1,26 +1,32 @@
 //import React from 'react'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-
+import {remove} from '../store/cartSlice';
 
 export default function Cart() {
     const products = useSelector(state => state.cart);
-
-
+    const dispatch = useDispatch();
+    const removeToCart = (id) =>{
+        dispatch(remove(id));
+    }
 
 
     const cards = products.map(product => (
         <div key={product.id} className="w-full mb-4">
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="w-full  rounded overflow-hidden shadow-lg">
              <img className="w-1/3 h-auto object-cover " src={product.image}/>
-                <div className="px-6 py-4">
-                    <div className="font-bold text-l mb-2">{product.title}</div>
-                        <p className="text-gray-700 text-base">
-                            {product.price}$
+                <div className="px-6 py-4 flex justify-between" >
+                    <div className="font-bold text-l mb-2 ">{product.title}</div>
+                        <p className="text-gray-700 text-base mx-4 ">
+                               {product.price}$
                         </p>
                     </div>
-                <div className="px-6 pt-4 pb-2">
-                    <button onClick={()=> addToCart(product)} className="font-mono font-bold bg-gray-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
+                    <p className="flex justify-start px-6">
+                        Category: {product.category}
+                    </p>
+                   
+                <div className="px-6 pt-4 pb-2 scroll-mb-4 flex justify-start">
+                    <button onClick={()=> removeToCart(product.id)} className="font-mono font-bold bg-red-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Remove Item</button>
                 </div>
             </div>
         </div>
@@ -30,7 +36,7 @@ export default function Cart() {
 
 
   return (
-    <div className="container mx-auto">
+    <div className="container w-full my-5">
     
     {/* {JSON.stringify(products)}  */}
     {/* this is a way to check the json file if it was pulled from the api correctly or not */}
