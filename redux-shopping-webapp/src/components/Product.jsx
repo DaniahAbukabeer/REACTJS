@@ -12,7 +12,7 @@ const Product = () => {
     },[]);
 
     const cards = products.map(product => (
-        <div key={product.id} className="w-full md:w-1/2 lg:w-1/4 p-2 m-0">
+        <div key={product.id} className="">
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
              <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"/>
                 <div className="px-6 py-4">
@@ -22,14 +22,11 @@ const Product = () => {
                         </p>
                     </div>
                 <div className="px-6 pt-4 pb-2">
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                    <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    <button className="font-mono font-bold bg-gray-500 rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Click me</button>
                 </div>
             </div>
-
         </div>
-    ))
+    ));
 
 
     return (
