@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {add} from '../store/cartSlice';
+import { getProducts } from "../store/productSlice";
+
 const Product = () => {
     const dispatch = useDispatch();
-
-    const [products, getProducts] = useState([]);
+    const {data: products} = useSelector(state => state.products)
+    //const [products, getProducts] = useState([]);
 
     useEffect(()=>{
+        //dispatch an action for fetchProduct
+       // dispatch(getProducts());
+
+
+
         //calling the api
         fetch('https://fakestoreapi.com/products')
         .then(data=> data.json())
