@@ -12,17 +12,17 @@ const Product = () => {
     },[]);
 
     const cards = products.map(product => (
-        <div key={product.id} className="">
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
-             <img className="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains"/>
-                <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-                        <p className="text-gray-700 text-base">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+        <div key={product.id} className="h-full">
+            <div className="max-w-sm h-full rounded overflow-hidden shadow-lg flex flex-col">
+             <img className="w-full h-auto object-cover " src={product.image}/>
+                <div className="px-6 py-4 flex-grow">
+                    <div className="font-bold text-l mb-2">{product.title}</div>
+                        <p className="text-gray-700 text-sm">
+                            {product.price}$
                         </p>
                     </div>
                 <div className="px-6 pt-4 pb-2">
-                    <button className="font-mono font-bold bg-gray-500 rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Click me</button>
+                    <button className="font-mono font-bold bg-gray-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
                 </div>
             </div>
         </div>
