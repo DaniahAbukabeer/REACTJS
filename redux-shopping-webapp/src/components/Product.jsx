@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {add} from '../store/cartSlice';
-import { getProducts } from "../store/productSlice";
+//import { getProducts } from "../store/productSlice";
 
 const Product = () => {
     const dispatch = useDispatch();
-    const {data: products} = useSelector(state => state.products)
-    //const [products, getProducts] = useState([]);
+    //const {data: products} = useSelector(state => state.products)
+    const [products, getProducts] = useState([]);
 
     useEffect(()=>{
         //dispatch an action for fetchProduct
-       // dispatch(getProducts());
+       //dispatch(getProducts());
 
 
 
