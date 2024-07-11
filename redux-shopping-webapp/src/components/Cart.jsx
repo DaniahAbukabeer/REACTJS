@@ -1,6 +1,6 @@
 //import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import {remove} from '../store/cartSlice';
+import {remove, increment, decrement} from '../store/cartSlice';
 
 
 
@@ -10,7 +10,17 @@ export default function Cart() {
     const dispatch = useDispatch();
     const removeFromCart = (id) =>{
         dispatch(remove(id));
-    }
+    };
+
+    const handleIncrement = (product) =>{
+        dispatch(increment({id: product.id}));
+    }; 
+
+    const handleDecrement = (product) =>{
+        dispatch(decrement({id: product.id}));
+    };
+
+    
 
 
     const cards = products.map(product => (
@@ -23,9 +33,18 @@ export default function Cart() {
                             {product.price}$
                         </p>
                     </div>
-                <div className="px-6 pt-4 pb-2 flex justify-start mb-4">
+                    <div className="mb-6">
+                        <span className="bg-blue-100 rounded-full py-3">
+
+                        <button className="mr-2 px-5 py-2 transition-all  bg-blue-300 rounded-full hover:bg-blue-500 hover:cursor-pointer" onClick={()=> handleIncrement(product)}>+</button>
+                        <span className="mx-2 text-2xl font-semibold">{product.quantity}</span>
+                        <button className="ml-2 px-5 py-2 transition-all bg-blue-300 rounded-full hover:bg-blue-500 hover:cursor-pointer" onClick={()=>handleDecrement(product)}>-</button>
+                        </span>
+
+                    </div>
+                {/* <div className="px-6 pt-4 pb-2 flex justify-start mb-4">
                     <button onClick={()=>removeFromCart(product.id)}  className="font-mono font-bold bg-red-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Remove Item</button>
-                </div>
+                </div> */}
             </div>
         </div>
     ));
