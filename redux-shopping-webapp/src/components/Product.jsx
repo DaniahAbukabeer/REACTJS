@@ -37,7 +37,13 @@ const Product = () => {
                         </p>
                     </div>
                 <div className="px-4 pt-4 pb-2">
-                    <button onClick={()=> addToCart(product)} className="cursor-pointer font-mono font-bold w-full py-3 bg-blue-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
+                    <button onClick={()=> addToCart(product)} className="cursor-pointer font-mono font-bold w-full
+                     bg-blue-500 text-white rounded py-1 px-3
+                      hover:bg-blue-300 hover:text-blue-900 
+                      transition-color duration-200 delay-75"
+                      
+                      >Add To Cart
+                      </button>
                 </div>
             </div>
         </div>
