@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {add} from '../store/cartSlice';
+import _ from "lodash"
 //import { getProducts } from "../store/productSlice";
 
 const Product = () => {
@@ -27,16 +28,16 @@ const Product = () => {
 
     const cards = products.map(product => (
         <div key={product.id} className="h-full">
-            <div className="max-w-sm h-full rounded overflow-hidden shadow-lg flex flex-col">
-             <img className="w-full h-auto object-cover " src={product.image}/>
+            <div className=" h-full rounded overflow-hidden shadow-lg flex flex-col">
+             <img className="w-full py-6 px-12 h-[50vh] object-contain border-2 border-gray-100 " src={product.image}/>
                 <div className="px-6 py-4 flex-grow">
-                    <div className="font-bold text-l mb-2">{product.title}</div>
+                    <div className="font-bold text-lg h-16 leading-tight">{_.truncate( product.title, {length:60, omission:'..'})}</div>
                         <p className="text-gray-700 text-sm">
                             {product.price}$
                         </p>
                     </div>
-                <div className="px-6 pt-4 pb-2">
-                    <button onClick={()=> addToCart(product)} className="font-mono font-bold bg-gray-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
+                <div className="px-4 pt-4 pb-2">
+                    <button onClick={()=> addToCart(product)} className="cursor-pointer font-mono font-bold w-full py-3 bg-blue-500 text-white rounded py-1 px-3 hover:bg-slate-300 hover:text-black">Add To Cart</button>
                 </div>
             </div>
         </div>
