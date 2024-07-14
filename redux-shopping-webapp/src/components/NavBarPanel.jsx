@@ -12,7 +12,7 @@ export default function NavBarPanel() {
     <div>
 
 
-<nav className="bg-white border-gray-200 dark:bg-gray-900">
+<nav className="bg-white border-gray-200 dark:bg-gray-900 rounded-2xl">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-5 p-4">
     <div className='justify-start'>
 
