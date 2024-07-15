@@ -16,18 +16,23 @@ const Product = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     // const [addedToCart, setAddedToCart] = useState({});
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpenSort, setIsOpenSort] = useState(false);
+    const [isOpenFilter,setIsOpenFilter] = useState(false);
     const [sortValue, setSortValue] = useState(0);
     const [filterValue, setFilterValue] = useState([]);
+    const [defaultProducts, setDefaultProducts] = useState();
     useEffect(()=>{
         //dispatch an action for fetchProduct
-       //dispatch(setProducts());
-
+        //dispatch(setProducts());
+        
         //calling the api
-        fetch('https://fakestoreapi.com/products')
-        .then(data=> data.json())
-        .then(result=> setProducts(result));
-    },[products,sortValue]);
+        setDefaultProducts(
+            fetch('https://fakestoreapi.com/products')
+            .then(data=> data.json())
+            .then(result=> setProducts(result))
+        );
+     
+    },[]);
 
     // useEffect(()=>{
     //     const sortedProducts = [...products];
@@ -74,7 +79,7 @@ const Product = () => {
              <img className="w-full py-6 px-12 h-[50vh] object-contain border-2 border-gray-100 " src={product.image}/>
                 <div className="px-6 py-4 flex-grow">
                     <div className="font-bold text-lg h-16 leading-tight">{_.truncate( product.title, {length:60, omission:'..'})}</div>
-                        <p className="text-gray-700 text-sm font-mono font-bold m-2">
+                        <p className="text-gray-700 text-sm font-mono font-bold sm:mt-4 m-2">
                             {product.price}$
                         </p>
                     </div>
@@ -93,11 +98,11 @@ const Product = () => {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
             </svg> */}
                 {/* <img src={cartIcon} className="w-6 h-6"/> */}
-                <img className="w-6 h-6 before:translate-x-0 after:translate-x-20 after:delay-1000" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+                <img className="w-6 h-6 before:translate-x-0 after:translate-x-20 after:delay-1000 select-none" src="https://img.icons8.com/pastel-glyph/64/FFFFFF/shopping-cart--v1.png" alt="shopping-cart--v1"/>
             {/* <CartIcon fill='white' stroke='currentColor' className='w-6 h-6'/> */}
         </span>
-        <span className="absolute flex items-center justify-center w-full h-full text-blue-500 transition-all  transform group-active:translate-x-full ease">Add to Cart</span>
-        <span className="relative invisible">Add to cart</span>
+        <span className="absolute flex items-center select-none justify-center w-full h-full text-blue-500 transition-all  transform group-active:translate-x-full ease">Add to Cart</span>
+        <span className="relative invisible select-none">Add to cart</span>
     </a>
                         {/* {isLoading && (
                             <img 
@@ -117,11 +122,14 @@ const Product = () => {
     const handelSort = ()=>{
         const sortedProducts = [...products];
         if(sortValue == 0)
-            sortedProducts;
-        else if(sortValue == 1)
-            sortedProducts.sort((a,b)=>a.price - b.price);
-        else if(sortValue == 2)
+            sortedProducts = [...defaultProducts];
+        else if(sortValue == 1){
+            //this sorts based on price from high to low
             sortedProducts.sort((a,b)=>b.price - a.price);
+        }
+        else if(sortValue == 2)
+            //this sorts based on price from low to high
+            sortedProducts.sort((a,b)=>a.price - b.price);
         else if(sortValue == 3)
             sortedProducts.sort((a,b)=> a.title.localeCompare(b.title));
         else if(sortValue == 4)
@@ -137,6 +145,11 @@ const Product = () => {
     const clickedSort = (value) => {
         setSortValue(value);
 
+        handelSort();
+    }
+
+    const clickedFilter = (value) => {
+        setFilterValue([...filterValue, value]);
     }
 
 
@@ -147,37 +160,76 @@ const Product = () => {
             <h1 className="text-3xl font-bold font-mono mt-4 mb-8">Product Dashboard</h1> 
             </div>
 
-            <div className="flex justify-between space-x-2">
+            <div className="flex justify-start
+             space-x-2">
                 {/* <button onClick={()=> onclick(condition)}>Sort A-Z</button> */}
-                <div className="mb-6">
+{/* SORT BUTTON */}
+<div className="mb-3 ml-1">
                     
-<button onClick={()=>setIsOpen(!isOpen)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Sort <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<button onClick={()=>setIsOpenSort(!isOpenSort)} id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="text-white select-none bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Sort <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
 </svg>
 </button>
 
+
+
 {/* <!-- Dropdown menu --> */}
-<div id="dropdown" className={`z-10 ${isOpen? '' : 'hidden'} max-w-24 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+<div id="dropdown" className={`z-10 ${isOpenSort? '' : 'hidden'} max-w-24 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
         <li>
-        <a onClick={()=>clickedSort(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</a>
+        <a onClick={()=>clickedSort(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Default</a>
         </li>
       <li>
-        <a onClick={()=>clickedSort(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Low-High</a>
+        <a onClick={()=>clickedSort(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Low-High</a>
       </li>
       <li>
-        <a onClick={()=>clickedSort(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">High-Low</a>
+        <a onClick={()=>clickedSort(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">High-Low</a>
       </li>
       <li>
-        <a onClick={()=>clickedSort(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">A-Z</a>
+        <a onClick={()=>clickedSort(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">A-Z</a>
       </li>
       <li>
-        <a onClick={()=>clickedSort(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Z-A</a>
+        <a onClick={()=>clickedSort(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Z-A</a>
       </li>
     </ul>
 </div>
 
-                </div>
+</div>
+
+
+{/* FILTER BUTTON */}
+<div className="mb-3 mr-1">
+        <button onClick={()=>setIsOpenFilter(!isOpenFilter)} id="dropdownDefaultButton2" data-dropdown-toggle="dropdown1" className="text-white select-none bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Filter <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+</svg>
+        </button>
+
+        {/* <!-- Dropdown menu --> */}
+    <div id="dropdown1" className={`z-10 ${isOpenFilter? '' : 'hidden'} max-w-24 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton2">
+        <li>
+        <a onClick={()=>clickedSort(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Default</a>
+        </li>
+      <li>
+        <a onClick={()=>clickedSort(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">rating</a>
+      </li>
+      <li>
+        <a onClick={()=>clickedSort(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">High-Low</a>
+      </li>
+      <li>
+        <a onClick={()=>clickedSort(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">A-Z</a>
+      </li>
+      <li>
+        <a onClick={()=>clickedSort(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Z-A</a>
+      </li>
+    </ul>
+    <div class="py-2">
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
+    </div>
+    </div>
+</div>
+                
+
             </div>
             
             {/* {JSON.stringify(products)}  */}
