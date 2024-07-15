@@ -6,28 +6,42 @@ import cartIcon from '../assets/cart-plus-svgrepo-com.svg';
 //import { ReactComponent as CartIcon }from '../assets/cart-plus-svgrepo-com.svg';
 
 //import AnimatedButton from "./AnimatedButton";
-//import { getProducts } from "../store/productSlice";
+//import { setProducts } from "../store/productSlice";
 
 import loadingIcon from '../assets/loading-80-svgrepo-com.svg';
 
 const Product = () => {
     const dispatch = useDispatch();
     //const {data: products} = useSelector(state => state.products)
-    const [products, getProducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     // const [addedToCart, setAddedToCart] = useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [sortValue, setSortValue] = useState(0);
-
+    const [filterValue, setFilterValue] = useState([]);
     useEffect(()=>{
         //dispatch an action for fetchProduct
-       //dispatch(getProducts());
+       //dispatch(setProducts());
 
         //calling the api
         fetch('https://fakestoreapi.com/products')
         .then(data=> data.json())
-        .then(result=> getProducts(result));
-    },[]);
+        .then(result=> setProducts(result));
+    },[products,sortValue]);
+
+    // useEffect(()=>{
+    //     const sortedProducts = [...products];
+    //     if(sortValue == 1)
+    //         sortedProducts.sort((a,b)=>a.price - b.price);
+    //     else if(sortValue == 2)
+    //         sortedProducts.sort((a,b)=>b.price - a.price);
+    //     else if(sortValue == 3)
+    //         sortedProducts.sort((a,b)=> a.title.localeCompare(b.title));
+    //     else if(sortValue == 4)
+    //         sortedProducts.sort((a,b)=>b.title.localeCompare(a.title));
+        
+    //     setProducts(sortedProducts);
+    // },[sortValue]);
 
     const loading = () => {
         return(
@@ -100,9 +114,30 @@ const Product = () => {
         </div>
     ));
 
-    const sort = (condition)=>{
-        
+    const handelSort = ()=>{
+        const sortedProducts = [...products];
+        if(sortValue == 0)
+            sortedProducts;
+        else if(sortValue == 1)
+            sortedProducts.sort((a,b)=>a.price - b.price);
+        else if(sortValue == 2)
+            sortedProducts.sort((a,b)=>b.price - a.price);
+        else if(sortValue == 3)
+            sortedProducts.sort((a,b)=> a.title.localeCompare(b.title));
+        else if(sortValue == 4)
+            sortedProducts.sort((a,b)=>b.title.localeCompare(a.title));
+        setProducts(sortedProducts);
     };
+
+
+    const handelFilter = ()=> {
+
+    };
+
+    const clickedSort = (value) => {
+        setSortValue(value);
+
+    }
 
 
     return (
@@ -125,19 +160,19 @@ const Product = () => {
 <div id="dropdown" className={`z-10 ${isOpen? '' : 'hidden'} max-w-24 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
     <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
         <li>
-        <a onClick={()=>setSortValue(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</a>
+        <a onClick={()=>clickedSort(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Default</a>
         </li>
       <li>
-        <a onClick={()=>setSortValue(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Low-High</a>
+        <a onClick={()=>clickedSort(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Low-High</a>
       </li>
       <li>
-        <a nClick={()=>setSortValue(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">High-Low</a>
+        <a onClick={()=>clickedSort(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">High-Low</a>
       </li>
       <li>
-        <a nClick={()=>setSortValue(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">A-Z</a>
+        <a onClick={()=>clickedSort(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">A-Z</a>
       </li>
       <li>
-        <a nClick={()=>setSortValue(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Z-A</a>
+        <a onClick={()=>clickedSort(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Z-A</a>
       </li>
     </ul>
 </div>
