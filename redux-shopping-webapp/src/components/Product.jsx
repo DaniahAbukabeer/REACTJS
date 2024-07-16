@@ -20,7 +20,12 @@ const Product = () => {
     const [isOpenFilter,setIsOpenFilter] = useState(false);
     const [sortValue, setSortValue] = useState(0);
     const [filterValue, setFilterValue] = useState([]);
-    const [defaultProducts, setDefaultProducts] = useState();
+    const [defaultProducts, setDefaultProducts] = useState(
+        {
+            ratings: [],
+            categories: [],
+        }
+    );
     useEffect(()=>{
         //dispatch an action for fetchProduct
         //dispatch(setProducts());
@@ -122,7 +127,7 @@ const Product = () => {
     const handelSort = ()=>{
         const sortedProducts = [...products];
         if(sortValue == 0)
-            sortedProducts = [...defaultProducts];
+            null;//the functionallity to return default unsorted list doesnt work yet
         else if(sortValue == 1){
             //this sorts based on price from high to low
             sortedProducts.sort((a,b)=>b.price - a.price);
@@ -139,17 +144,31 @@ const Product = () => {
 
 
     const handelFilter = ()=> {
+        const filteredProducts = [...defaultProducts];
+        if(filterValue.ratings.length > 0)
+            {
+                filteredProducts = filteredProducts.filter(products=> 
+                    filterValue.ratings.includes(Math.round(product.ratings.rate))
+                );
+            }
 
+        if(filterValue.categories.length > 0)
+            {
+                filteredProducts = filteredProducts.filter(product=>
+                    filterValue.categories.includes(product.category)
+                );
+            }
+        setProducts(filteredProducts);
     };
 
     const clickedSort = (value) => {
         setSortValue(value);
-
         handelSort();
     }
 
     const clickedFilter = (value) => {
         setFilterValue([...filterValue, value]);
+        handelFilter();
     }
 
 
@@ -199,33 +218,88 @@ const Product = () => {
 
 {/* FILTER BUTTON */}
 <div className="mb-3 mr-1">
-        <button onClick={()=>setIsOpenFilter(!isOpenFilter)} id="dropdownDefaultButton2" data-dropdown-toggle="dropdown1" className="text-white select-none bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Filter <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+        <button onClick={()=>setIsOpenFilter(!isOpenFilter)} id="dropdownDefaultButton2" data-dropdown-toggle="dropdown1" className={`text-white ${isOpenFilter? 'w-44' : 'w-auto'} px-8 select-none bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800`} type="button">
+         <span className="flex items-center justify-center">
+
+            Filter 
+            <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
 </svg>
+         </span>
         </button>
 
         {/* <!-- Dropdown menu --> */}
-    <div id="dropdown1" className={`z-10 ${isOpenFilter? '' : 'hidden'} max-w-24 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
-    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton2">
+    <div id="dropdown1" className={`z-10 ${isOpenFilter? '' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+    <ul className="py-2 text-sm text-gray-700 px-2 dark:text-gray-200" aria-labelledby="dropdownDefaultButton2">
+        <li className="flex justify-start">
+            Categories
+        </li>
+       
         <li>
-        <a onClick={()=>clickedSort(0)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Default</a>
+        <div class="flex justify-start">
+          <input id="checkbox-item-1" type="checkbox" value="men's clothing" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">men's clothing</label>
+        </div>        
+        </li>
+        <li>
+        <div class="flex justify-start">
+          <input id="checkbox-item-1" type="checkbox" value="women's clothing" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">women's clothing</label>
+        </div>        
+        </li>
+        <li>
+        <div class="flex justify-start">
+          <input id="checkbox-item-1" type="checkbox" value="jewelery" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">jewelery</label>
+        </div>        
+        </li>
+        <li>
+        <div class="flex justify-start">
+          <input id="checkbox-item-1" type="checkbox" value="electronics" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">electronics</label>
+        </div>        
+        </li>
+        </ul>
+
+    <ul className="py-2 px-2 ">
+
+        <li className="flex jsutify-start text-white ">
+            Rating 
+        </li>
+
+        
+      <li>
+      <div class="flex items-center">
+          <input id="checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">o</label>
+        </div>  
+      </li>
+      <li>
+      <div class="flex items-center">
+          <input id="checkbox-item-1" type="checkbox" value="2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">oo</label>
+        </div>  
         </li>
       <li>
-        <a onClick={()=>clickedSort(1)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">rating</a>
-      </li>
+      <div class="flex items-center">
+          <input id="checkbox-item-1" type="checkbox" value="3" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">ooo</label>
+        </div>  
+         </li>
       <li>
-        <a onClick={()=>clickedSort(2)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">High-Low</a>
-      </li>
-      <li>
-        <a onClick={()=>clickedSort(3)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">A-Z</a>
-      </li>
-      <li>
-        <a onClick={()=>clickedSort(4)} className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white select-none">Z-A</a>
-      </li>
+      <div class="flex items-center">
+          <input id="checkbox-item-1" type="checkbox" value="4" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">oooo</label>
+        </div>  
+          </li>
+          <li>
+      <div class="flex items-center">
+          <input id="checkbox-item-1" type="checkbox" value="5" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+          <label for="checkbox-item-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">ooooo</label>
+        </div>  
+          </li>
     </ul>
-    <div class="py-2">
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated link</a>
-    </div>
+    
     </div>
 </div>
                 
