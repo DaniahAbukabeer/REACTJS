@@ -7,16 +7,17 @@ import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} fr
 import Dashboard from './components/Dashboard'
 import Cart from './components/Cart'
 import RootLayout from './components/RootLayout'
-
+import HomePage from './components/HomePage'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  //const [count, setCount] = useState(0)
 
   const router = createBrowserRouter(createRoutesFromElements(
     <Route path='/' element={<RootLayout/>}>
-      <Route index element={<Dashboard/>}></Route>
+      <Route path='/products' element={<Dashboard/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
+      <Route index element={<HomePage/>}></Route>
     </Route>
   ))
   return (
