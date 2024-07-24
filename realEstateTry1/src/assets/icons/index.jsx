@@ -14,8 +14,11 @@ import telegram from './telegram.svg';
 import quarterTimer from './time-quarter-past.svg';
 import twitter from './twitter.svg';
 import dropdownWhite from './angle-circle-down-white.svg';
+import arrowRight from './arrow-right.svg';
+import longerArrowRight from './longer-arrow-right.svg';
+import longestArrowRgith from './longest-arrow-right.svg';
 export const icons = {
-    dropdownWhite,
+dropdownWhite,
     bed,
     star,
     calculator,
@@ -31,4 +34,7 @@ export const icons = {
     telegram,
     quarterTimer,
     twitter,
+    arrowRight,
+    longerArrowRight,
+    longestArrowRgith,
 };

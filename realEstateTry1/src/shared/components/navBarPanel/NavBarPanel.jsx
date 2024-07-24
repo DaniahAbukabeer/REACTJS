@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { icons } from "../../../assets/icons";
-
+import { colors } from "../../../assets/colors";
 export default function NavBarPanel() {
 
     return(
@@ -42,13 +42,13 @@ export default function NavBarPanel() {
                         </ul>
 
                     </div>
-                    <div className="justify-end">
+                    <div className="justify-end ">
                         <ul className="flex space-x-4">
-                            <li className="hover:text-indigo-700 hover:cursor-pointer">
-                                Dark
-                            </li>
-                            <li className="hover:text-indigo-700 hover:cursor-pointer"> 
+                            <li className="hover:text-indigo-700 py-0.5 mr-4 hover:cursor-pointer"> 
                                 E
+                            </li>
+                            <li className="hover:text-indigo-400 hover:cursor-pointer">
+                               <button className=" rounded-3xl py-0.5 px-6" style={{backgroundColor: colors.darkdarkGray}}> Dark? </button>
                             </li>
                         </ul>
                     </div>
